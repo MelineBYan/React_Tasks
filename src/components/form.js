@@ -23,7 +23,10 @@ class Form extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+<<<<<<< HEAD
           <label>Name</label> <br />
+=======
+>>>>>>> 8f6b920e11f60051cc8d711c39da3e54928f9d27
           <input name="name" />
           <br />
           <label>Lastname</label>
