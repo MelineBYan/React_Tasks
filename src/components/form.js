@@ -20,7 +20,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input name="name" />
           <input name="lastname" />
           <button>Submit</button>
