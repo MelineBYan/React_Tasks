@@ -11,17 +11,19 @@ class Form extends Component {
     this.nameHandler = this.nameHandler.bind(this);
   }
 
-  nameHandler(e) {
+  handleSubmit(e) {
     this.setState((state) => ({
-      name: e.target.value,
+      name: e.target.name.value,
+      lastname: e.target.lastName.value,
     }));
   }
   render() {
     return (
       <div>
         <form>
-          <input onchange={this.nameHandler} />
-          <input onchange={this.lastNameHandler} />
+          <input name="name" />
+          <input name="lastname" />
+          <button>Submit</button>
         </form>
       </div>
     );

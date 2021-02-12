@@ -34,6 +34,7 @@ class Counter extends Component {
   }
 
   render() {
+    console.log(this.state.name);
     return (
       <div>
         <button onClick={this.increment}>Increment</button>
