@@ -7,7 +7,7 @@ import "../src/components/Product.css";
 
 import { Component } from "react";
 import Counter from "../src/components/Counter";
-import Form from "../src/components/form";
+import Form from "../src/components/Form";
 
 class App extends Component {
   state = {
@@ -50,6 +50,7 @@ class App extends Component {
       },
     ],
   };
+
   render() {
     return (
       <div className="myDiv">

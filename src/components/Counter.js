@@ -11,6 +11,7 @@ class Counter extends Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.reset = this.reset.bind(this);
+    this.handler = this.handler.bind(this);
   }
 
   increment() {
@@ -26,7 +27,9 @@ class Counter extends Component {
       }));
     }
   }
-
+  handler = () => {
+    console.log("Mouseover event");
+  };
   reset() {
     this.setState((state) => ({
       count: 0,
@@ -34,12 +37,13 @@ class Counter extends Component {
   }
 
   render() {
-    console.log(this.state.name);
     return (
       <div>
         <button onClick={this.increment}>Increment</button>
         <button onClick={this.decrement}>Decrement</button>
-        <button onClick={this.reset}>Reset</button>
+        <button onClick={this.reset} onMouseOver={this.handler}>
+          Reset
+        </button>
         <h1>Current: {this.state.count}</h1>
       </div>
     );

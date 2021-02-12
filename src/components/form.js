@@ -8,21 +8,28 @@ class Form extends Component {
       name: "",
       lastName: "",
     };
-    this.nameHandler = this.nameHandler.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     this.setState((state) => ({
       name: e.target.name.value,
-      lastname: e.target.lastName.value,
+      lastName: e.target.lastname.value,
     }));
+    console.log(this.state);
   }
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
+          <label>Name</label> <br />
           <input name="name" />
+          <br />
+          <label>Lastname</label>
+          <br />
           <input name="lastname" />
+          <br />
           <button>Submit</button>
         </form>
       </div>
