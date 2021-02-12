@@ -2,7 +2,6 @@ import React from "react";
 import Header from "./components/Header";
 import "./App.css";
 import Product from "./components/Product";
-import "./components/Product.css";
 import "../src/components/Product.css";
 
 import { Component } from "react";
