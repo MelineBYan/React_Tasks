@@ -27,9 +27,9 @@ class Counter extends Component {
       }));
     }
   }
-  handler = () => {
+  handler() {
     console.log("Mouseover event");
-  };
+  }
   reset() {
     this.setState((state) => ({
       count: 0,

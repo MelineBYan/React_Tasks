@@ -1,0 +1,37 @@
+.form {
+  top: 100px;
+  width: 200px;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 30px;
+  background-color: rgb(222, 241, 241);
+  display: block;
+  width: 200px;
+  margin-bottom: 10px;
+  border: 1px groove rgb(243, 243, 243);
+  box-shadow: rgb(126, 101, 92) 2px 3px;
+}
+
+.btn {
+  width: 150px;
+  height: 30px;
+  background-color: aquamarine;
+  outline: rgb(12, 36, 51);
+  border: 2px groove rgb(161, 161, 161);
+  box-shadow: rgb(99, 100, 99) 2px 5px 3px;
+}
+
+.userData {
+  text-align: left;
+  margin-top: 40px;
+  font-size: 16px;
+  color: red;
+}
+.delete {
+  position: relative;
+  float: right;
+}

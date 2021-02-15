@@ -19,7 +19,7 @@ const Header = () => {
           <a href="#about">Chats</a>
         </li>
       </ul>
-      <Search />
+      {/* <Search /> */}
     </div>
   );
 };

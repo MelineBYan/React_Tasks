@@ -3,9 +3,15 @@ h1 {
 }
 .mydiv {
   display: inline-flex;
-  flex-direction: column;
 }
-.myDiv {
-  display: inline;
-  width: 500px;
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+
+  display: block;
+  margin: 100px;
 }

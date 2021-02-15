@@ -1,38 +1,63 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import "./Form.css";
+import { v4 as uuidv4 } from "uuid";
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: "",
-      lastName: "",
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
+const Form = () => {
+  const [users, setUsers] = useState([]);
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.setState((state) => ({
-      name: e.target.name.value,
-      lastName: e.target.lastname.value,
-    }));
-    console.log(this.state);
-  }
-  render() {
-    return (
+    setUsers([
+      ...users,
+      {
+        name: e.target.name.value,
+        lastName: e.target.lastname.value,
+        age: e.target.age.value,
+      },
+    ]);
+  };
+  console.log(users);
+  const remove = (e) => {
+    console.log(e.target.id);
+    setUsers([users.filter((user, i) => i !== e.target.id)]);
+  };
+
+  return (
+    <div className="form">
+      <h3>Registration</h3>
+      <form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <input name="name" type="text" placeholder="Enter name" required />
+        <label>Lastname</label>
+        <input
+          name="lastname"
+          type="text"
+          placeholder="Enter lastname"
+          required
+        />
+        <label>Age</label>
+        <input name="age" type="number" placeholder="Enter age" required />
+        <button className="btn">Sign up</button>
+      </form>
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input name="name" />
-          <br />
-          <label>Lastname</label>
-          <br />
-          <input name="lastname" />
-          <br />
-          <button>Submit</button>
-        </form>
+        {users ? (
+          users.map((user, i) => (
+            <div key={i} className="userData">
+              Name: {user.name}
+              <button className="delete" id={uuidv4()} onClick={remove}>
+                X
+              </button>
+              <br />
+              Lastname: {user.lastName}
+              <br />
+              Age: {user.age}
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
 export default Form;

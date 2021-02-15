@@ -1,0 +1,11 @@
+/* image {
+  width: 400px;
+  height: 150px;
+} */
+.posts {
+  position: relative;
+  padding: 20px;
+  left: 500px;
+  display: block;
+  width: 50%;
+}

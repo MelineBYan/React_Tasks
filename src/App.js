@@ -1,50 +1,51 @@
 import React from "react";
 import Header from "./components/Header";
 import "./App.css";
-import Product from "./components/Product";
-import "../src/components/Product.css";
+import Posts from "../src/components/Posts";
+import "../src/components/Posts.css";
 
 import { Component } from "react";
 import Counter from "../src/components/Counter";
 import Form from "../src/components/Form";
+import Profile from "../src/components/Profile";
 
 class App extends Component {
   state = {
-    products: [
+    posts: [
       {
-        img: "/images/image1.webp",
-        name: "juice",
-        price: "8686",
+        img: "",
+        name: "Jane",
+        text: "Hi, how are you?",
         id: 1,
       },
       {
-        img: "/images/image2.webp",
-        name: "juice",
-        price: "8246",
+        img: "",
+        name: "Tom",
+        text: "Hi, how are you",
         id: 2,
       },
       {
-        img: "/images/image3.webp",
-        name: "juice",
-        price: "4564",
+        img: "",
+        name: "Ann",
+        text: "Hi, how are you",
         id: 3,
       },
       {
-        img: "/images/image4.webp",
-        name: "juice",
-        price: "8686",
+        img: "",
+        name: "Eva",
+        text: "Hi, how are you",
         id: 4,
       },
       {
-        img: "/images/image5.webp",
-        name: "juice",
-        price: "8246",
+        img: "",
+        name: "Bob",
+        text: "Hi, how are you",
         id: 5,
       },
       {
-        img: "/images/image6.webp",
-        name: "juice",
-        price: "4564",
+        img: "",
+        name: "Lana",
+        text: "Hi, how are you",
         id: 6,
       },
     ],
@@ -53,11 +54,11 @@ class App extends Component {
   render() {
     return (
       <div className="myDiv">
-        <h1> My profile</h1>
-        <Header />
-        <Counter />
-        <Form />
-        <Product products={this.state.products} className="product" />
+        <Header className="header" />
+        {/* <Counter /> */}
+        <Form className="register" />
+        {/* <Profile /> */}
+        <Posts posts={this.state.posts} className="posts" />
       </div>
     );
   }
