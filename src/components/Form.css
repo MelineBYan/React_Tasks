@@ -1,6 +1,8 @@
 .form {
   top: 100px;
   width: 200px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
   justify-content: center;
   align-items: center;
@@ -15,21 +17,35 @@ input {
   border: 1px groove rgb(243, 243, 243);
   box-shadow: rgb(126, 101, 92) 2px 3px;
 }
+input:hover {
+  outline: blue;
+}
 
 .btn {
-  width: 150px;
+  color: rgb(243, 243, 243);
+  font-size: 20px;
+  width: 200px;
   height: 30px;
-  background-color: aquamarine;
+  background-color: rgb(18, 16, 173);
   outline: rgb(12, 36, 51);
   border: 2px groove rgb(161, 161, 161);
   box-shadow: rgb(99, 100, 99) 2px 5px 3px;
 }
-
+.btn:hover {
+  background-color: palegoldenrod;
+  color: brown;
+}
 .userData {
   text-align: left;
+  background-color: rgb(18, 16, 173, 0.7);
   margin-top: 40px;
-  font-size: 16px;
-  color: red;
+  font-size: 20px;
+  color: black;
+  width: 300px;
+  height: 150px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px;
+  text-align: center;
 }
 .delete {
   position: relative;

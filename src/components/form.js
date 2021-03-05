@@ -4,52 +4,99 @@ import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
   const [users, setUsers] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUsers([
-      ...users,
-      {
+    const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (
+      regexp.test(e.target.email.value) &&
+      e.target.password.value.length > 5
+    ) {
+      const newUser = {
+        id: uuidv4(),
         name: e.target.name.value,
-        lastName: e.target.lastname.value,
+        email: e.target.email.value,
         age: e.target.age.value,
-      },
-    ]);
+        password: e.target.password.value,
+      };
+
+      fetch("https://class-chat-server-app.herokuapp.com/users/", {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => console.error(err.message));
+    } else {
+      alert("Please, enter valid values");
+    }
   };
-  console.log(users);
-  const remove = (e) => {
-    console.log(e.target.id);
-    setUsers([users.filter((user, i) => i !== e.target.id)]);
+
+  const remove = (id) => {
+    const newList = users.filter((elem) => elem._id !== id);
+    setUsers([...newList]);
+  };
+
+  const getAlUsers = (e) => {
+    fetch("https://class-chat-server-app.herokuapp.com/users/", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setUsers([...res]);
+        console.log(res);
+      })
+      .catch((err) => console.error(err.message));
   };
 
   return (
     <div className="form">
       <h3>Registration</h3>
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label>Username</label>
         <input name="name" type="text" placeholder="Enter name" required />
-        <label>Lastname</label>
-        <input
-          name="lastname"
-          type="text"
-          placeholder="Enter lastname"
-          required
-        />
+        <label>Email</label>
+        <input name="email" type="text" placeholder="Enter email" required />
         <label>Age</label>
         <input name="age" type="number" placeholder="Enter age" required />
+        <label>Password</label>
+        <input
+          name="password"
+          type="password"
+          placeholder="Enter password"
+          required
+        />
+        <label>Confirm password</label>
+        <input
+          name="passwordConfirm"
+          type="password"
+          placeholder="Confirm password"
+          required
+        />
         <button className="btn">Sign up</button>
+        <button type="button" className="btn" onClick={getAlUsers}>
+          Get All Users
+        </button>
       </form>
       <div>
         {users ? (
-          users.map((user, i) => (
-            <div key={i} className="userData">
+          users.map((user) => (
+            <div key={user._id} className="userData">
               Name: {user.name}
-              <button className="delete" id={uuidv4()} onClick={remove}>
+              <button className="delete" onClick={() => remove(user._id)}>
                 X
               </button>
               <br />
-              Lastname: {user.lastName}
+              Lastname: {user.email}
               <br />
               Age: {user.age}
+              <br />
+              password: {user.password}
             </div>
           ))
         ) : (

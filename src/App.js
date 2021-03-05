@@ -8,6 +8,7 @@ import { Component } from "react";
 import Counter from "../src/components/Counter";
 import Form from "../src/components/Form";
 import Profile from "../src/components/Profile";
+// import Chat from "../src/components/Chat";
 
 class App extends Component {
   state = {
@@ -50,15 +51,23 @@ class App extends Component {
       },
     ],
   };
-
+  componentDidMount() {
+    fetch("https://class-chat-server-app.herokuapp.com/users/", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err.messages));
+  }
   render() {
     return (
       <div className="myDiv">
         <Header className="header" />
-        {/* <Counter /> */}
+        <Counter />
         <Form className="register" />
+
         {/* <Profile /> */}
-        <Posts posts={this.state.posts} className="posts" />
+        {/* <Posts posts={this.state.posts} className="posts" /> */}
       </div>
     );
   }

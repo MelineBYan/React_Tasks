@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 class Counter extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      users: [],
       count: 0,
     };
 
@@ -44,7 +46,8 @@ class Counter extends Component {
         <button onClick={this.reset} onMouseOver={this.handler}>
           Reset
         </button>
-        <h1>Current: {this.state.count}</h1>
+        <h1>Current:{this.state.count}</h1>
+        {}
       </div>
     );
   }
